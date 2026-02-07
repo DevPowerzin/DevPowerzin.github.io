@@ -1,1 +1,44 @@
 # DevPowerzin.github.io
+
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>TT</title>
+  <style>
+    html, body {margin:0;padding:0;width:100%;height:100%;background-color:#000;display:flex;justify-content:center;align-items:center;color:#fff;font-family:Arial, Helvetica, sans-serif}
+    .texto {font-size:48px;letter-spacing:4px}
+    .erro {position:fixed;top:0;left:0;width:100%;height:100%;background:#000;display:none;justify-content:center;align-items:center;text-align:center;color:#ff0000;font-weight:bold;font-size:42px;line-height:1.2}
+    .erro span {display:block}
+  </style>
+</head>
+<body>
+  <div class="texto">*TT*</div>
+  <!-- The worst mistake of my life was having ##ERROR## -->
+  <div id="erro" class="erro">
+    <span>ERRO 929</span>
+    <span>a página parou</span>
+  </div>
+  <script>
+    const texto = document.querySelector('.texto');
+    const erroTela = document.getElementById('erro');
+    const FLAG = 'erro_929_ativo';function ativarErro(){
+  localStorage.setItem(FLAG,'1');
+  erroTela.style.display='flex';
+  console.error('##ERROR## Subject not found. Memory reference corrupted.');
+  throw new Error('##ERROR## Subject not found. Memory reference corrupted.');
+}
+
+window.addEventListener('load',() => {
+  if(localStorage.getItem(FLAG) === '1'){
+    erroTela.style.display='flex';
+    console.error('##ERROR## Subject not found. Memory reference corrupted.');
+    return;
+  }
+
+  setTimeout(() => { texto.innerText = "He's not here anymore..."; }, 20000);
+  setTimeout(() => { ativarErro(); }, 30000);
+});
+
+  </script>
+</body>
+</html>
